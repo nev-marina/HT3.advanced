@@ -15,7 +15,8 @@ HEADERS = {
     'sec-ch-ua-mobile': '?0'
 }
 
-url = 'https://habr.com/ru/all'
+main_url = 'https://habr.com'
+url = main_url + '/ru/all'
 
 KEYWORDS = ['дизайн', 'фото', 'web', 'python', 'google', 'Vue']
 
@@ -28,7 +29,7 @@ for article in articles:
     hubs_name = article.h2.a.text
     hubs_date = article.find(class_='tm-article-snippet__datetime-published').find('time').get('title')
     hubs_link = article.find('a', class_='tm-article-snippet__title-link').get('href')
-    final_link = url + hubs_link
+    final_link = main_url + hubs_link
     for keyword in KEYWORDS:
         if keyword.lower() in hubs_name.lower():
             print(f'Статья: {hubs_date} - {hubs_name} - {final_link}')
